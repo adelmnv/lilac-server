@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { RoomsModule } from './rooms/rooms.module';
+import { ParticipantsModule } from './participants/participants.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -14,6 +17,9 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
       synchronize: false,
     }),
+    UsersModule,
+    RoomsModule,
+    ParticipantsModule,
   ],
   controllers: [],
   providers: [],
