@@ -9,8 +9,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Room } from './room.entity';
-import { User } from './user.entity';
+import { Room } from './room.dao';
+import { User } from './user.dao';
 
 @Entity('participants')
 export class Participant {
