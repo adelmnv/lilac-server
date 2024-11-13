@@ -9,25 +9,25 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Room } from './room.dao';
-import { User } from './user.dao';
+import { RoomDao } from './room.dao';
+import { UserDao } from './user.dao';
 
 @Entity('participants')
-export class Participant {
+export class ParticipantDao {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Room, (room) => room.participants)
+  @ManyToOne(() => RoomDao, (room) => room.participants)
   @JoinColumn()
-  room: Room;
+  room: RoomDao;
 
-  @ManyToOne(() => User, (user) => user.participations)
+  @ManyToOne(() => UserDao, (user) => user.participations)
   @JoinColumn()
-  user: User;
+  user: UserDao;
 
-  @OneToOne(() => Participant, { nullable: true })
+  @OneToOne(() => ParticipantDao, { nullable: true })
   @JoinColumn()
-  participantReceiver: Participant | null;
+  participantReceiver: ParticipantDao | null;
 
   @Column({ type: 'varchar' })
   wishlist: string;

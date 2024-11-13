@@ -7,11 +7,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Room } from './room.dao';
-import { Participant } from './participant.dao';
+import { RoomDao } from './room.dao';
+import { ParticipantDao } from './participant.dao';
 
 @Entity('users')
-export class User {
+export class UserDao {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -21,11 +21,11 @@ export class User {
   @Column({ type: 'varchar', nullable: true })
   tgNickname: string;
 
-  @OneToMany(() => Room, (room) => room.creatorUser)
-  rooms: Room[];
+  @OneToMany(() => RoomDao, (room) => room.creatorUser)
+  rooms: RoomDao[];
 
-  @OneToMany(() => Participant, (participant) => participant.user)
-  participations: Participant[];
+  @OneToMany(() => ParticipantDao, (participant) => participant.user)
+  participations: ParticipantDao[];
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;

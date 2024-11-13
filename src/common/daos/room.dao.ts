@@ -9,17 +9,17 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from './user.dao';
-import { Participant } from './participant.dao';
+import { UserDao } from './user.dao';
+import { ParticipantDao } from './participant.dao';
 
 @Entity('rooms')
-export class Room {
+export class RoomDao {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => User, (user) => user.rooms)
+  @ManyToOne(() => UserDao, (user) => user.rooms)
   @JoinColumn()
-  creatorUser: User;
+  creatorUser: UserDao;
 
   @Column({ type: 'varchar' })
   name: string;
@@ -33,8 +33,8 @@ export class Room {
   @Column({ type: 'integer', nullable: true, default: null })
   maxBudget: number;
 
-  @OneToMany(() => Participant, (participant) => participant.room)
-  participants: Participant[];
+  @OneToMany(() => ParticipantDao, (participant) => participant.room)
+  participants: ParticipantDao[];
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
