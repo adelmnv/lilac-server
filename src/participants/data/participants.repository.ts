@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { ParticipantDao } from 'src/common/daos/participant.dao';
-import { DataSource, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
-export class ParticipantsRepository extends Repository<ParticipantDao> {
-  constructor(private dataSource: DataSource) {
-    super(ParticipantDao, dataSource.createEntityManager());
-  }
+export class ParticipantsRepository {
+  constructor(
+    @InjectRepository(ParticipantDao)
+    private readonly participantsRepository: Repository<ParticipantDao>,
+  ) {}
 }
