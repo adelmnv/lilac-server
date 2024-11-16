@@ -21,7 +21,7 @@ export class RoomDao {
   @JoinColumn()
   creatorUser: UserDao;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   name: string;
 
   @Column({ type: 'timestamp' })

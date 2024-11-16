@@ -15,10 +15,10 @@ export class UserDao {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: 'varchar', nullable: true, length: 255 })
   tgNickname: string;
 
   @OneToMany(() => RoomDao, (room) => room.creatorUser)

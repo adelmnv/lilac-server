@@ -19,11 +19,12 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "migration:run": "npm run typeorm -- -d ./database/typeorm.config.ts migration:run",
-    "migration:generate": "npm run typeorm -- -d ./database/typeorm.config.ts migration:generate ./database/migrations/%npm_config_name%",
+    "migration:run": "npm run typeorm -- -d ./database/config/data-source.ts migration:run",
+    "migration:generate": "npm run typeorm -- -d ./database/config/data-source.ts migration:generate ./database/migrations/%npm_config_name%",
     "migration:create": "npm run typeorm -- migration:create ./database/migrations/%npm_config_name%",
-    "migration:revert": "npm run typeorm -- -d ./database/typeorm.config.ts migration:revert",
-    "migration:show": "npm run typeorm -- -d ./database/typeorm.config.ts migration:show"
+    "migration:revert": "npm run typeorm -- -d ./database/config/data-source.ts migration:revert",
+    "migration:show": "npm run typeorm -- -d ./database/config/data-source.ts migration:show",
+    "database:clear": "ts-node ./database/scripts/clear.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

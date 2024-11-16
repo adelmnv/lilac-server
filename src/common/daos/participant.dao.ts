@@ -29,7 +29,7 @@ export class ParticipantDao {
   @JoinColumn()
   participantReceiver: ParticipantDao | null;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 500 })
   wishlist: string;
 
   @CreateDateColumn({ type: 'timestamp' })
