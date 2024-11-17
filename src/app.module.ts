@@ -1,20 +1,21 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { ParticipantsModule } from './participants/participants.module';
+import databaseConfig from './common/config/database.config';
+import { daos } from './common/daos';
+
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: +process.env.DB_PORT,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      autoLoadEntities: true,
+      host: databaseConfig.host,
+      port: +databaseConfig.port,
+      username: databaseConfig.username,
+      password: databaseConfig.password,
+      database: databaseConfig.database,
+      entities: daos,
       synchronize: false,
     }),
     UsersModule,
