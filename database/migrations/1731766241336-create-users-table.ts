@@ -19,7 +19,7 @@ export class CreateUsersTable1731766241336 implements MigrationInterface {
             length: '255',
           },
           {
-            name: 'tgNickname',
+            name: 'telegram_nickname',
             type: 'varchar',
             isNullable: true,
             length: '255',

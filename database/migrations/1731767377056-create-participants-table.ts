@@ -35,8 +35,7 @@ export class CreateParticipantsTable1731767377056
           },
           {
             name: 'wishlist',
-            type: 'varchar',
-            length: '500',
+            type: 'text',
           },
           {
             name: 'created_at',
