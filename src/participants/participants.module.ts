@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ParticipantDao } from 'src/common/daos/participant.dao';
 import { RoomsModule } from 'src/rooms/rooms.module';
@@ -10,8 +10,8 @@ import { ParticipantsController } from './presenter/participants.controller';
 @Module({
   imports: [
     TypeOrmModule.forFeature([ParticipantDao]),
-    RoomsModule,
-    UsersModule,
+    forwardRef(() => RoomsModule),
+    forwardRef(() => UsersModule),
   ],
   providers: [ParticipantsRepository, ParticipantsService],
   controllers: [ParticipantsController],

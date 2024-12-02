@@ -4,7 +4,7 @@ import { UserDao } from 'src/common/daos/user.dao';
 import { ParticipantsModule } from 'src/participants/participants.module';
 import { RoomsModule } from 'src/rooms/rooms.module';
 import { UsersRepository } from './data/users.repository';
-import { UsersService } from './domain/users.service';
+import { UserService } from './domain/users.service';
 import { UsersController } from './presenter/users.controller';
 
 @Module({
@@ -13,7 +13,8 @@ import { UsersController } from './presenter/users.controller';
     RoomsModule,
     ParticipantsModule,
   ],
-  providers: [UsersRepository, UsersService],
+  providers: [UsersRepository, UserService],
   controllers: [UsersController],
+  exports: [UserService],
 })
 export class UsersModule {}
