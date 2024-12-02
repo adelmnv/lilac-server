@@ -5,6 +5,7 @@ import { RoomsModule } from './rooms/rooms.module';
 import { ParticipantsModule } from './participants/participants.module';
 import databaseConfig from './common/config/database.config';
 import { daos } from './common/daos';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { daos } from './common/daos';
     UsersModule,
     RoomsModule,
     ParticipantsModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
